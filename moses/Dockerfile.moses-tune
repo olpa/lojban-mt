@@ -1,0 +1,6 @@
+FROM moses-tool
+
+RUN ln -s /opt/moses/bin/moses /opt/moses/bin/moses_chart
+
+ENV PATH "${MOSES_HOME}/bin:/opt/tools:${PATH}"
+

@@ -1,0 +1,27 @@
+FROM moses-builder
+
+MAINTAINER olpa@uucode.com
+
+ARG MOSES_RELEASE_TAG="RELEASE-4.0"
+
+ARG INSTALL_DIR=/opt
+ENV MOSES_HOME=$INSTALL_DIR/moses
+
+WORKDIR /build
+
+RUN git clone --depth 1 --branch ${MOSES_RELEASE_TAG} https://github.com/moses-smt/mosesdecoder.git \
+    && cd ./mosesdecoder \
+    && make -f contrib/Makefiles/install-dependencies.gmake PREFIX=/opt
+
+RUN cd ./mosesdecoder \
+    && OPT=/opt ./compile.sh --prefix=${MOSES_HOME} --install-scripts
+
+RUN git clone --depth 1 https://github.com/moses-smt/mgiza.git \
+    && cd mgiza/mgizapp \
+    && cmake . \
+    && make \
+    && make install \
+    && mkdir -p ${INSTALL_DIR}/tools \
+    && cp bin/* scripts/merge_alignment.py ${INSTALL_DIR}/tools
+
+ENV LD_LIBRARY_PATH /opt/lib

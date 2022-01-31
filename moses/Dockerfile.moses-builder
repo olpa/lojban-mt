@@ -1,0 +1,32 @@
+FROM ubuntu:20.04 AS moses-builder
+
+MAINTAINER olpa@uucode.com
+
+ARG MOSES_RELEASE_TAG="RELEASE-4.0"
+
+ARG INSTALL_DIR=/opt
+ENV MOSES_HOME=$INSTALL_DIR/moses
+
+WORKDIR /build
+
+# As suggested by https://github.com/amake/moses-smt/blob/master/base/Dockerfile
+ARG PACKAGES="build-essential \
+    git-core \
+    pkg-config \
+    automake \
+    libtool \
+    wget \
+    zlib1g-dev \
+    python-dev \
+    libbz2-dev \
+    cmake"
+
+
+RUN apt-get update
+
+# https://askubuntu.com/questions/909277/avoiding-user-interaction-with-tzdata-when-installing-certbot-in-a-docker-contai
+RUN apt-get install -yq tzdata \
+    && dpkg-reconfigure -f noninteractive tzdata
+ENV TZ=Etc/UTC
+
+RUN apt-get update && apt-get install -q -y ${PACKAGES}
