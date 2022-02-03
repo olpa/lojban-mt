@@ -19,7 +19,9 @@ ARG PACKAGES="build-essential \
     zlib1g-dev \
     python-dev \
     libbz2-dev \
-    cmake"
+    cmake \
+    curl \
+    vim"
 
 
 RUN apt-get update

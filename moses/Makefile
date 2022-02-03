@@ -19,4 +19,7 @@ moses-tune: .moses-tune
 	touch $@
 
 run-moses:
-	docker run -it -v $(shell pwd)/share:/share moses-tune
+	docker run -it \
+	  -v $(shell pwd)/share:/share \
+	  -v $(shell pwd)/test-baseline.sh:/share/test-baseline.sh \
+	  moses-tune

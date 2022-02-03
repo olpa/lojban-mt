@@ -4,7 +4,7 @@ Under construction. It is possible to run tutorials.
 
 The containers are not optimized.
 
-## Build
+# Build
 
 ```
 make moses-builder
@@ -12,16 +12,16 @@ make moses-tool
 make moses-tune
 ```
 
-## Run
+# Run
 
 ```
 mkdir share
 make run-moses
 ```
 
-## Execute examples
+# Check it works
 
-See <http://www.statmt.org/moses/?n=Moses.Tutorial>, <http://www.statmt.org/moses/?n=Moses.SyntaxTutorial>
+See <http://www.statmt.org/moses/?n=Moses.Tutorial>
 
 On the host:
 
@@ -40,3 +40,9 @@ cd /share/sample-models
 echo 'das ist ein kleines haus' | moses -f phrase-model/moses.ini
 echo 'das ist ein haus' | moses -f string-to-tree/moses.ini
 ```
+
+# Bigger test
+
+See <https://www.statmt.org/moses/?n=Moses.Baseline>
+
+The commands are stored in `test-baseline.sh`.

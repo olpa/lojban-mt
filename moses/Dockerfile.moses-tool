@@ -9,12 +9,14 @@ ENV MOSES_HOME=$INSTALL_DIR/moses
 
 WORKDIR /build
 
+
 RUN git clone --depth 1 --branch ${MOSES_RELEASE_TAG} https://github.com/moses-smt/mosesdecoder.git \
     && cd ./mosesdecoder \
     && make -f contrib/Makefiles/install-dependencies.gmake PREFIX=/opt
 
 RUN cd ./mosesdecoder \
     && OPT=/opt ./compile.sh --prefix=${MOSES_HOME} --install-scripts
+
 
 RUN git clone --depth 1 https://github.com/moses-smt/mgiza.git \
     && cd mgiza/mgizapp \
@@ -23,5 +25,10 @@ RUN git clone --depth 1 https://github.com/moses-smt/mgiza.git \
     && make install \
     && mkdir -p ${INSTALL_DIR}/tools \
     && cp bin/* scripts/merge_alignment.py ${INSTALL_DIR}/tools
+
+
+RUN ln -s /opt/moses/bin/moses /opt/moses/bin/moses_chart
+
+ENV PATH "${MOSES_HOME}/bin:/opt/tools:${PATH}"
 
 ENV LD_LIBRARY_PATH /opt/lib
