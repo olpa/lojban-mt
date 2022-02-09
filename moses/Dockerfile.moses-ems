@@ -1,0 +1,13 @@
+FROM moses-tool
+
+RUN wget https://github.com/irstlm-team/irstlm/archive/refs/tags/v6.00.01.tar.gz -O irstlm-6.00.01.tar.gz \
+  && tar xzf irstlm-6.00.01.tar.gz \
+  && cd irstlm-6.00.01 \
+  && perl -p -ibak -e 's@-isystem/usr/include@@' ./src/CMakeLists.txt \
+  && cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="/opt" \
+  && make \
+  && make install
+
+RUN apt-get install -q -y graphviz imagemagick \
+  && perl -p -ibak -e 's@rights="none" pattern="PS"@rights="read|write" pattern="PS"@' /etc/ImageMagick-6/policy.xml
+

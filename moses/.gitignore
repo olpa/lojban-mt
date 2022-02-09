@@ -1,4 +1,5 @@
 share
 .moses-builder
 .moses-tool
+.moses-ems
 .moses-tune
