@@ -17,7 +17,7 @@ ARG PACKAGES="build-essential \
     libtool \
     wget \
     zlib1g-dev \
-    python-dev \
+    python3-dev \
     libbz2-dev \
     cmake \
     curl \

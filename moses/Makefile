@@ -1,5 +1,9 @@
 NAMESPACE="olpa"
 
+run: run-moses
+
+build: moses-tune
+
 moses-builder: .moses-builder
 
 .moses-builder: Dockerfile.moses-builder
