@@ -1,0 +1,11 @@
+FROM moses-tune
+
+EXPOSE 6543
+
+WORKDIR /build
+
+RUN apt install -q -y python3-setuptools
+
+RUN git clone --depth 1 https://github.com/olpa/zmifanva.git \
+  && cd zmifanva/web \
+  && python3 setup.py install

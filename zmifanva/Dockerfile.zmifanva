@@ -1,0 +1,7 @@
+FROM python:3.8.12-buster
+
+COPY --from=zf-base /build/zmifanva/web /build/zmifanva/web
+RUN cd /build/zmifanva/web && python3 setup.py install
+
+ENTRYPOINT ["/usr/local/bin/pserve", "/build/zmifanva/web/production.ini"]
+EXPOSE 6543
