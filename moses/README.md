@@ -1,17 +1,8 @@
 # moses in docker
 
-Under construction. It is possible to run tutorials.
+[Moses](https://www.statmt.org/moses/) is a statistical machine translation system.
 
-The containers are not optimized.
-
-# Build
-
-```
-make moses-builder
-make moses-tool
-make moses-ems
-make moses-tune
-```
+The image `olpa/moses-tune` on Docker hub: <https://hub.docker.com/r/olpa/moses-tune>.
 
 # Run
 
@@ -72,3 +63,12 @@ cat /share/baseline-corpus/working/experiments/evaluation/report.*
 ```
 
 It is possible to run the EMS without X support. Add the option `-no-graph` to `experiment.perl`.
+
+
+# Re-build
+
+```
+make moses-builder
+make moses-tool
+make moses-tune
+```

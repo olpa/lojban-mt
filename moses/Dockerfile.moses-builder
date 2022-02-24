@@ -2,8 +2,6 @@ FROM ubuntu:20.04 AS moses-builder
 
 MAINTAINER olpa@uucode.com
 
-ARG MOSES_RELEASE_TAG="RELEASE-4.0"
-
 ARG INSTALL_DIR=/opt
 ENV MOSES_HOME=$INSTALL_DIR/moses
 
@@ -19,9 +17,14 @@ ARG PACKAGES="build-essential \
     zlib1g-dev \
     python3-dev \
     libbz2-dev \
-    cmake \
-    curl \
-    vim"
+    cmake"
+
+ARG DEV_PACKAGES="curl \
+    vim \
+    unzip"
+
+ARG EMS_PACKAGES="graphviz \
+    imagemagick"
 
 
 RUN apt-get update
@@ -31,4 +34,9 @@ RUN apt-get install -yq tzdata \
     && dpkg-reconfigure -f noninteractive tzdata
 ENV TZ=Etc/UTC
 
-RUN apt-get update && apt-get install -q -y ${PACKAGES}
+
+RUN apt-get update && apt-get install -q -y ${PACKAGES} ${DEV_PACKAGES} ${EMS_PACKAGES}
+
+
+# For the EMS system, allow conversion from PS to an image
+RUN perl -p -ibak -e 's@rights="none" pattern="PS"@rights="read|write" pattern="PS"@' /etc/ImageMagick-6/policy.xml

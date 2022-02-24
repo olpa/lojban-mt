@@ -9,13 +9,16 @@ ENV MOSES_HOME=$INSTALL_DIR/moses
 
 WORKDIR /build
 
-
-RUN git clone --depth 1 --branch ${MOSES_RELEASE_TAG} https://github.com/moses-smt/mosesdecoder.git \
+RUN wget https://github.com/moses-smt/mosesdecoder/archive/refs/tags/${MOSES_RELEASE_TAG}.zip \
+    && unzip ${MOSES_RELEASE_TAG}.zip \
+    && mv mosesdecoder-${MOSES_RELEASE_TAG} mosesdecoder \
     && cd ./mosesdecoder \
     && make -f contrib/Makefiles/install-dependencies.gmake PREFIX=/opt
 
 RUN cd ./mosesdecoder \
     && OPT=/opt ./compile.sh --prefix=${MOSES_HOME} --install-scripts
+
+RUN ln -s /opt/moses/bin/moses /opt/moses/bin/moses_chart
 
 
 RUN git clone --depth 1 https://github.com/moses-smt/mgiza.git \
@@ -27,7 +30,14 @@ RUN git clone --depth 1 https://github.com/moses-smt/mgiza.git \
     && cp bin/* scripts/merge_alignment.py ${INSTALL_DIR}/tools
 
 
-RUN ln -s /opt/moses/bin/moses /opt/moses/bin/moses_chart
+RUN wget https://github.com/irstlm-team/irstlm/archive/refs/tags/v6.00.01.tar.gz -O irstlm-6.00.01.tar.gz \
+  && tar xzf irstlm-6.00.01.tar.gz \
+  && cd irstlm-6.00.01 \
+  && perl -p -ibak -e 's@-isystem/usr/include@@' ./src/CMakeLists.txt \
+  && cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX="/opt" \
+  && make \
+  && make install
+
 
 ENV PATH "${MOSES_HOME}/bin:/opt/tools:${PATH}"
 
