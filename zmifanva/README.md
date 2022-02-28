@@ -1,6 +1,20 @@
-# zmifanva <-> Lojban  English Machine Translation Engine
+# zmifanva: Lojban <-> English Machine Translation Engine
 
 Developed by Masato Hagiwara: <https://github.com/mhagiwara/zmifanva>, forked at <https://github.com/olpa/zmifanva/>.
+
+## Run the web application
+
+```
+wget https://raw.githubusercontent.com/olpa/lojban-mt/master/zmifanva/docker-compose.yaml
+docker-compose up
+xdg-open http://localhost:6543
+```
+
+Zmivanfa works on the port 6543. Open the start page in your browser: <http://localhost:6543>.
+
+# Develop
+
+make run-zmifanva  # docker-compose up
 
 ## Build
 
@@ -11,15 +25,12 @@ Build the images `zf-base`, `moses-zf-jb2en`, `moses-zf-en2jb`, `zmifanva`:
 ```
 make all
 ```
-
-## Run the web application
+## Run the web application with docker-compose
 
 ```
-make run-zmifanva  # docker-compose up
+make run-zmifanva
 xdg-open http://localhost:6543
 ```
-
-Zmivanfa works on the port 6543. Open the start page in your browser: <http://localhost:6543>.
 
 ## Run the web application without docker-comose
 

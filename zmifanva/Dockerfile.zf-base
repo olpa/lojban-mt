@@ -6,7 +6,7 @@ WORKDIR /build
 
 RUN apt install -q -y python3-setuptools
 
-RUN wet https://github.com/olpa/zmifanva/archive/refs/tags/${RELEASE_TAG}.zip \
+RUN wget https://github.com/olpa/zmifanva/archive/refs/tags/${RELEASE_TAG}.zip \
   && unzip ${RELEASE_TAG}.zip \
   && mv zmifanva-${RELEASE_TAG} zmifanva \
   && cd zmifanva/web \

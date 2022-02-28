@@ -24,6 +24,11 @@ zmifanva: .zmifanva
 	docker build -f $< -t olpa/zmifanva .
 	touch $@
 
+push:
+	docker push olpa/zmifanva
+	docker push olpa/moses-zf-en2jb
+	docker push olpa/moses-zf-jb2en
+
 # --
 
 host_ip=$(shell ip -o addr show up primary scope global | grep '/24' | head -1 | sed 's@^.*inet @@' | cut -f 1 -d /)
