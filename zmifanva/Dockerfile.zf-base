@@ -1,11 +1,13 @@
-FROM moses-tune
+FROM olpa/moses-tune
 
-EXPOSE 6543
+ARG RELEASE_TAG="1.0.0"
 
 WORKDIR /build
 
 RUN apt install -q -y python3-setuptools
 
-RUN git clone --depth 1 https://github.com/olpa/zmifanva.git \
+RUN wet https://github.com/olpa/zmifanva/archive/refs/tags/${RELEASE_TAG}.zip \
+  && unzip ${RELEASE_TAG}.zip \
+  && mv zmifanva-${RELEASE_TAG} zmifanva \
   && cd zmifanva/web \
   && python3 setup.py install

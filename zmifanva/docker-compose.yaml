@@ -1,13 +1,13 @@
 version: '3'
 services:
   zmifanva:
-    image: 'zmifanva'
+    image: 'olpa/zmifanva'
     ports:
       - '6543:6543'
     environment:
       MOSES_SERVER_JB2EN: 'http://jb2en:8080'
       MOSES_SERVER_EN2JB: 'http://en2jb:8080'
   jb2en:
-    image: 'moses-zf-jb2en'
+    image: 'olpa/moses-zf-jb2en'
   en2jb:
-    image: 'moses-zf-en2jb'
+    image: 'olpa/moses-zf-en2jb'
