@@ -72,3 +72,17 @@ make moses-builder
 make moses-tool
 make moses-tune
 ```
+
+# Notes
+
+## GIZA++ vs mgiza
+
+`moses` uses `giza++` by default, but the container provides `mgiza` instead. You need to notify the tools about the alternative.
+
+`train-model.perl`: add parameter `-mgiza`.
+
+EMS: add to the section `TRAINING`:
+
+```
+training-options = "-mgiza"
+```
