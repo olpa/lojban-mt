@@ -14,17 +14,16 @@ Zmivanfa works on the port 6543. Open the start page in your browser: <http://lo
 
 # Develop
 
-make run-zmifanva  # docker-compose up
-
 ## Build
 
 As a prerequisite, build `moses-tune` image: <../moses/README.md>.
 
-Build the images `zf-base`, `moses-zf-jb2en`, `moses-zf-en2jb`, `zmifanva`:
+Build the images `zf-base`, `olpa/moses-zf-jb2en`, `olpa/moses-zf-en2jb`, `olpa/zmifanva`:
 
 ```
 make all
 ```
+
 ## Run the web application with docker-compose
 
 ```
@@ -49,7 +48,7 @@ I wish you are lucky and `host_ip` is calculated correctly. Otherwise, set the v
 On the host:
 
 ```
-make run-zf-dev
+make run-dev
 ```
 
 In the container:

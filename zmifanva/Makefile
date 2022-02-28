@@ -38,7 +38,7 @@ networking=-p 6543:6543 \
   -e MOSES_SERVER_EN2JB=http://$(host_ip):8079
 
 run-dev:
-	docker run -it -rm \
+	docker run -it --rm \
 	  -v $(shell pwd)/share:/share \
 	  -v /home/olpa/p/zmifanva:/build/zmifanva \
 	  $(networking) \
@@ -48,10 +48,10 @@ run-zf-web:
 	docker run $(networking) olpa/zmifanva
 
 run-jb2en:
-	docker run -it -rm -p 8078:8080 olpa/moses-zf-jb2en
+	docker run -it --rm -p 8078:8080 olpa/moses-zf-jb2en
 
 run-en2jb:
-	docker run -it -rm -p 8079:8080 olpa/moses-zf-en2jb
+	docker run -it --rm -p 8079:8080 olpa/moses-zf-en2jb
 
 run-zmifanva:
 	docker-compose up
