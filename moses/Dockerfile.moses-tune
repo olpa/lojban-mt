@@ -1,5 +1,5 @@
 FROM moses-tool
 
-ln -s /usr/bin/python3 /usr/bin/python
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
 WORKDIR /share
