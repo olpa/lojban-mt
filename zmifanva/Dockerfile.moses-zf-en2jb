@@ -1,9 +1,0 @@
-FROM ubuntu:20.04
-
-COPY --from=olpa/moses-tune /opt/moses/bin/moses /opt/moses/bin/moses
-COPY --from=zf-base /build/zmifanva/train.en-jb/model /build/zmifanva/train.en-jb/model
-COPY --from=zf-base /build/zmifanva/lm/train.blm.jb /build/zmifanva/lm/train.blm.jb
-
-EXPOSE 8080
-
-ENTRYPOINT ["/opt/moses/bin/moses", "--server", "--server-port", "8080", "-f", "/build/zmifanva/train.en-jb/model/moses.ini"]
