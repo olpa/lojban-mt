@@ -1,3 +1,16 @@
+---
+title: lojban machine translation
+---
+## Posts
+
+<ul>
+  {% for post in site.posts %}
+    <li>
+      {{ post.date | date: "%-d %B %Y" }}, <a href="{{ post.url }}">{{ post.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
 ## Welcome to GitHub Pages
 
 You can use the [editor on GitHub](https://github.com/olpa/lojban-mt/edit/pages/docs/index.md) to maintain and preview the content for your website in Markdown files.
