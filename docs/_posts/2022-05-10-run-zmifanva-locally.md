@@ -9,7 +9,7 @@ Zmifanva is a lojban-to-english and english-to-lojban machine translation system
 
 Zmifanva used to be available online, but it disappeared time ago. I don't plan to resurrect its online apearence, but I've containerized the tool so that anyone can deploy zmifanva to internet.
 
-Or you can run zmifanva locally on your computer using [docker compose](TODO).
+Or you can run zmifanva locally on your computer using [docker compose](https://docs.docker.com/compose/install/).
 
 ```
 wget https://raw.githubusercontent.com/olpa/zmifanva/docker-compose.yaml

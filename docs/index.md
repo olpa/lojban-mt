@@ -6,7 +6,7 @@ title: lojban machine translation
 <ul>
   {% for post in site.posts %}
     <li>
-      {{ post.date | date: "%-d %B %Y" }}, <a href="{{ post.url }}">{{ post.title }}</a>
+      {{ post.date | date: "%-d %B %Y" }}, <a href="{{ post.url | prepend:site.baseurl }}">{{ post.title }}</a>
     </li>
   {% endfor %}
 </ul>
