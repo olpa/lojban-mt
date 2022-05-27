@@ -1,8 +1,10 @@
 # Machine translation from Lojban
 
-Tools:
+- [./data](./data): under construction
+- [./moses](./moses): dockerized statistical machine translation system [moses](https://www.statmt.org/moses/)
+- [./tokenizer](./tokenizer): under construction
+- [./zmifanva](./zmifanva): Lojban-English machine translation engine, originally by mhagiwara, moved to <https://github.com/olpa/zmifanva/>
 
-- Moses: https://www.statmt.org/moses/
-- Zmifanva: https://github.com/mhagiwara/zmifanva
+Project home page: <https://olpa.github.io/lojban-mt/>.
 
-Step 1: make dockerized Zmifanva
+[Follow the project or be involved](https://olpa.github.io/lojban-mt/2022/05/19/join-the-project.html).
