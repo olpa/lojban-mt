@@ -1,0 +1,289 @@
+# Format for entries:
+# - separate entries by an empty line
+# - First line: the text to parse
+# - Second line: expected tokens from the lexer
+# - Third line, optional: expected tokens from the tokenizer
+# Format for comments:
+# - Start a line with '#'
+# - Start a comment with '  #' (two spaces before the hash sign)
+
+# Chapter 4.2: cmavo
+.y.
+. y .
+
+ku'a'e
+ku'a'e
+
+sau'e
+sau'e
+
+bai'ai
+bai'ai
+
+.iseci'i  # ex4.1
+. i se ci'i
+
+punaijecanai  # ex4.2
+pu nai je ca nai
+
+ki'e.u'e  # ex4.3
+ki'e . u'e
+
+ki'e'u'e  # ex4.4
+ki'e'u'e
+
+cy.ibu.abu  # ex4.5
+cy . ibu . abu
+
+.e'o ko ko kurji  # ex4.6
+. e'o " " ko " " ko " " kurji
+
+le re nanmu  # ex4.7
+le " " re " " nanmu
+
+# Chapter 4.5: lujvo
+
+skami pilno  # ex4.19
+skami " " pilno
+
+sampli  # ex4.23
+sam pli
+
+bralo'i  # ex4.24
+bra lo'i
+
+soirsai  # ex4.26
+soi r sai
+
+# Chapter 3.6: rafsi
+
+mamtypatfu  # ex4.27
+mamt y patfu
+mamta## patfu
+
+lerfyliste  # ex4.28
+lerf y liste
+lerfu## liste
+
+nancyprali  # ex4.29
+nanc y prali
+nanca## prali
+
+prunyplipe  # ex4.30
+prun y plipe
+pruni## plipe
+
+vancysanmi  # ex4.31
+vanc y sanmi
+vanci## sanmi
+
+cumfri  # ex4.32
+cum fri
+cumki## lifri
+
+klezba  # ex4.33
+kle zba
+klesi## zbasu
+
+kuxta'a  # ex4.34
+kux ta'a
+krixa## tavla
+
+sniju'o  # ex4.35
+sni ju'o
+sinxa## djuno
+
+mampa'u  # ex4.36
+mam pa'u
+mamta## patfu
+
+lerste  # ex4.37
+ler ste
+lerfu## liste
+
+patyta'a
+pat y ta'a
+pante## tavla
+
+mudysiclu
+mud y siclu
+mudri## siclu
+
+zunlyjamfu
+zunl y jamfu
+zunle## jamfu
+
+zunlyjma
+zunl y jma
+zunle## jamfu
+
+zuljamfu
+zul jamfu
+zunle## jamfu
+
+ro'inre'o
+ro'i n re'o
+rokci renro
+
+bridi zei valsi  # ex4.38
+bridi " " zei " " valsi
+
+xy. zei kantu  # ex4.39
+xy ". " zei " " kantu
+
+kulnr,farsi zei lolgai  # ex4.40
+kuln r, farsi " " zei " " lol gai
+
+na'e zei .a zei na'e zei by. livgyterbilma  # ex4.41
+na'e " " zei " ." a " " zei " " na'e " " zei " " by ". " livg y ter bilma
+
+.cerman. zei jamkarce  # ex4.42
+. cer man ". " zei " " jam karce
+
+na'e zei .a zei na'e zei by. zei livgyterbilma  # ex4.43
+na'e " " zei " ." a " " zei " " na'e " " zei " " by ". " zei " " livg y ter bilma
+
+me la'o ly. spaghetti .ly.  # ex4.44
+me " " la'o " " ly. " spaghetti " ".ly."
+
+mi la spagetis.  # ex4.45
+mi " " la " " spa get i s .
+
+spageti  # ex4.46a
+spa get i
+
+cidj,r,spageti  # ex4.46b
+cidj ,r, spa get i
+
+dja,r,spageti  # ex4.46c
+dja ,r, spa get i
+
+xaceru  # ex4.47a
+xa ce ru
+
+tric,r,xaceru  # ex4.47b
+tric ,r, xac e ru  # note not "xa ce ru": this time we have a word, therefore lexer tries to extract rafsi
+
+ric,r,xaceru  # ex4.47c
+ric ,r, xac e ru
+
+bri  # ex4.48a
+bri
+
+cirl,r,bri  # ex4.48b
+cirl ,r, bri
+
+kobra  # ex4.49a
+kobra
+
+sinc,r,kobra  # ex4.49b
+sinc ,r, kobra
+
+kuark  # ex4.50a
+kua r k
+
+kuarka  # ex4.450b
+kua r ka
+
+sask,r,kuarka  # ex4.50c
+sask ,r, kua r ka
+
+djamo  # ex4.51a
+djamo
+
+lerf,r,djamo  # ex4.51b
+lerf ,r, djamo
+
+ler,l,djamo  # ex4.51c
+ler ,l, djamo
+
+bang,r,blgaria  # ex4.52
+bang ,r, b lga ria
+
+kuln,r,blgaria  # ex4.53
+kuln ,r, b lga ria
+
+gugd,r,blgaria  # ex4.54
+gugd ,r, b lga ria
+
+bang,r,kore,a  # ex4.55
+bang ,r, kor e , a
+
+kuln,r,kore,a  # ex4.56
+kuln ,r, kor e , a
+
+djim.  # ex4.57
+djim .
+
+djein.  # ex4.58
+dje i n .
+
+.arnold.  # ex4.59
+. a rno l d .
+
+pit.  # ex4.60
+pi t .
+
+katrinas.  # ex4.61
+kat rin a s .
+
+kat,r,in  #ex4.62
+kat ,r, i n
+
+katis.  # ex4.63
+ka ti s .
+
+keit.  # ex4.64
+kei t .
+
+djan. braun.  # ex4.65
+djan ". " bra u n .
+
+djanbraun.  # ex4.66
+dja n bra u n .
+
+pav.  # ex4.67
+pa v .
+
+sol.  # ex4.68
+so l .
+
+ralj.  # ex4.69
+ralj .
+
+nol.  # ex4.70
+no l .
+
+tci'ile  # ex4.75
+tci 'i le
+
+¡El pueblo unido hamas será vencido!
+¡ E l " " pue blo " " u ni do " " h a ma s " " se r á " " ven cid o !
+
+tci'ile ke canre tutra  # ex4.76
+tci 'i le " " ke " " canre " " tutra
+
+tci'ilykemcantutra  # ex4.77
+tci'il y kem can tutra
+
+# Chapter 17
+# ----------
+
+.y'y..abu by. cy. dy. .ebu fy. gy. .ibu jy. ky. ly. my. ny. .obu py. ry. sy. ty. .ubu vy. xy. .ybu zy.  # ch17.2
+. y'y .. abu " " by ". " cy ". " dy ". ." ebu " " fy ". " gy ". ." ibu " " jy ". " ky ". " ly ". " my ". " ny ". ." obu " " py ". " ry ". " sy ". " ty ". ." ubu " " vy ". " xy ". ." ybu " " zy .
+
+ty. abu by. ry. ubu  # ex17.2
+ty ". " abu " " by ". " ry ". " ubu
+
+ky. .obu .y'y. abu  # ex17.3
+ky ". ." obu " ." y'y ". " abu
+
+mi cy. claxu  # ex17.4
+mi " " cy ". " claxu
+
+.iVAN  # ex17.6
+. i V A N
+
+.ibu ga'e vy. .abu ny. to'a  # ex17.7
+. ibu " " ga'e " " vy ". ." abu " " ny ". " to'a
+
