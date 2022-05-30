@@ -3,6 +3,8 @@ title: lojban machine translation
 ---
 ## Posts
 
+Subscribe: [RSS](/feed.xml)
+
 <ul>
   {% for post in site.posts %}
     <li>

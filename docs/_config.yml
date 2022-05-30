@@ -1,2 +1,7 @@
 theme: jekyll-theme-midnight
 baseurl: /lojban-mt
+plugins:
+  - jekyll-feed
+author: Oleg Parashchenko
+title: Lojban machine translation
+description: News from lojban-mt project
