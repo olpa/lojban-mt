@@ -3,6 +3,12 @@ title: 'Join lojban machine translation project community'
 ---
 # Follow the lojban machine translation project
 
+1)
+
+Subscribe to the news: [RSS](/feed.xml)
+
+2)
+
 On github, add a star and follow the project [olpa/lojban-mt](https://github.com/olpa/lojban-mt):
 
 ![]({{ site.baseurl }}/assets/images/github_star_follow.png)
