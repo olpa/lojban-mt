@@ -1,11 +1,7 @@
 ---
+layout: default
 title: lojban machine translation
 ---
-## The project
-
-The project: [olpa/lojban-mt](https://github.com/olpa/lojban-mt)
-
-Subscribe to the news: [RSS](/feed.xml)
 
 ## Posts
 
@@ -17,3 +13,8 @@ Subscribe to the news: [RSS](/feed.xml)
   {% endfor %}
 </ul>
 
+## The project
+
+The project: [olpa/lojban-mt](https://github.com/olpa/lojban-mt)
+
+Subscribe to the news: [RSS]({{ site.baseurl }}/feed.xml)

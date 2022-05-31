@@ -5,3 +5,5 @@ plugins:
 author: Oleg Parashchenko
 title: Lojban machine translation
 description: News from lojban-mt project
+github:
+  repository_url: https://github.com/olpa/lojban-mt

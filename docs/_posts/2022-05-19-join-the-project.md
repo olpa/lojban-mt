@@ -1,11 +1,12 @@
 ---
+layout: post
 title: 'Join lojban machine translation project community'
 ---
 # Follow the lojban machine translation project
 
 1)
 
-Subscribe to the news: [RSS](/feed.xml)
+Subscribe to the news: [RSS]({{ site.baseurl }}/feed.xml)
 
 2)
 

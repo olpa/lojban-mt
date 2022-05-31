@@ -1,4 +1,5 @@
 ---
+layout: post
 title: 'Run zmifanva locally'
 date: '2022-05-10 17:00:00 +0100'
 ---
