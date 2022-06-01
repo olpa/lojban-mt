@@ -8,7 +8,7 @@ date: '2022-05-10 17:00:00 +0100'
 
 Zmifanva is a lojban-to-english and english-to-lojban machine translation system, initially developed by Masato Hagiwara: <https://github.com/mhagiwara/zmifanva>, now forked at <https://github.com/olpa/zmifanva/>.
 
-Zmifanva used to be available online, but it disappeared time ago. I don't plan to resurrect its online apearence, but I've containerized the tool so that anyone can deploy zmifanva to internet.
+Zmifanva used to be available online, but it disappeared time ago. I don't plan to resurrect its online appearance, but I've containerized the tool so that anyone can deploy zmifanva to internet.
 
 Or you can run zmifanva locally on your computer using [docker compose](https://docs.docker.com/compose/install/).
 
