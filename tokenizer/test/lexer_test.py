@@ -1,10 +1,12 @@
 import unittest
 from hamcrest import assert_that, equal_to, is_in, empty
 
-from lexer import lex
-from lexer import TokenClass as class_
-
-from fixture import load_fixture
+import os
+import sys
+sys.path.insert(0, os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..')))
+from jbotokenizer import lex, TokenClass as class_  # noqa: E402
+from fixture import load_fixture  # noqa: E402
 
 CMAVO = None
 LUJVO = None
