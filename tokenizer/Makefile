@@ -17,3 +17,10 @@ rafsi: jbotokenizer/rafsi.py
 
 jbotokenizer/rafsi.py: data/mk_rafsi_to_gismu.py data/rafsi.txt data/gismu.txt
 	python3 $+ $@
+
+dist:
+	python3 -m build
+
+push:
+	$(eval VERSION:=$(shell grep version setup.py | cut -d "'" -f 2))
+	gh release create tokenizer-v$(VERSION) ./dist/jbotokenizer-$(VERSION).tar.gz

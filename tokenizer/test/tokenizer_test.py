@@ -78,7 +78,7 @@ class TokenizerTest(unittest.TestCase):
         assert_that(t, equal_to(['do', '[MASK]', 'mi']))
 
     def test_fixture(self):
-        fixture = load_fixture('fixture.txt')
+        fixture = load_fixture()
         for item in fixture:
             text = item.text
             expected = item.token

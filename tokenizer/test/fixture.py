@@ -2,6 +2,10 @@ from collections import namedtuple
 import shlex
 import sys
 
+#
+# Fixture
+#
+
 FixtureEntry = namedtuple('FixtureEntry', 'text lex token')
 
 
@@ -28,7 +32,7 @@ def lines_to_entry(lines):
     return FixtureEntry(text, lex, tok)
 
 
-def load_fixture(fname):
+def load_fixture(fname='fixture.txt'):
     entries = []
     cur = []
 
@@ -53,6 +57,49 @@ def load_fixture(fname):
                 commit_entry()
         commit_entry()
     return entries
+
+
+#
+# Official data
+#
+
+
+def next_logflash_line(li, sep):
+    li = li.lstrip()
+    if ':' == sep:
+        li = li.replace('#', ':')
+    word = li.split(sep, 1)[0]
+    if word == "natmyrgu'e":
+        word = "natmygu'e"
+    if word[0] == '.':
+        word = word[1:]
+    return word
+
+
+def load_logflash_file(fname):
+    sep = ':' if 'lujvo' in fname else ' '
+    with open(fname) as h:
+        words = (next_logflash_line(li, sep) for li in h
+                 if 'LogFlash' not in li)
+        if sep == ':':
+            words = filter(lambda w: ' ' not in w, words)
+        return set(words)
+
+
+def load_official_cmavo(fname='../data/cmavo.txt'):
+    cmavo = load_logflash_file(fname)
+    cmavo.remove('slaka')
+    cmavo.remove('denpa')
+    return cmavo
+
+
+def load_official_lujvo(fname='../data/lujvo.txt'):
+    return load_logflash_file(fname)
+
+
+#
+#
+#
 
 
 if __name__ == '__main__':

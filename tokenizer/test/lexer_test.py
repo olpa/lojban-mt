@@ -7,44 +7,13 @@ sys.path.insert(0, os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..')))
 from jbotokenizer import lex, TokenClass as class_  # noqa: E402
 from fixture import load_fixture  # noqa: E402
-
-CMAVO = None
-LUJVO = None
+from fixture import load_official_cmavo, load_official_lujvo  # noqa: E402
 
 
 def parse_all(s):
     seq = []
     lex(s, 0, lambda *ls: seq.append(ls))
     return seq
-
-
-def next_line(li, sep):
-    li = li.lstrip()
-    if ':' == sep:
-        li = li.replace('#', ':')
-    word = li.split(sep, 1)[0]
-    if word == "natmyrgu'e":
-        word = "natmygu'e"
-    if word[0] == '.':
-        word = word[1:]
-    return word
-
-
-def load_file(fname):
-    sep = ':' if 'lujvo' in fname else ' '
-    with open(fname) as h:
-        words = (next_line(li, sep) for li in h if 'LogFlash' not in li)
-        if sep == ':':
-            words = filter(lambda w: ' ' not in w, words)
-        return set(words)
-
-
-def load_official_data_fixture():
-    global CMAVO, GISMU, LUJVO, RAFSI
-    CMAVO = load_file('../data/cmavo.txt')
-    LUJVO = load_file('../data/lujvo.txt')
-    CMAVO.remove('slaka')
-    CMAVO.remove('denpa')
 
 
 class CmavoTest(unittest.TestCase):
@@ -259,12 +228,9 @@ class BaseTest(unittest.TestCase):
 
 class LogFlashTest(unittest.TestCase):
 
-    def setUpClass():
-        if LUJVO is None:
-            load_official_data_fixture()
-
     def test_split_lujvo_only_to_rafsi(self):
-        for lujvo in sorted(LUJVO):
+        ls_lujvo = load_official_lujvo()
+        for lujvo in sorted(ls_lujvo):
             t = parse_all(lujvo)
 
             classes = set(map(lambda item: item[0].name, t))
@@ -274,12 +240,14 @@ class LogFlashTest(unittest.TestCase):
                         f'Unexpected parse of "{lujvo}": {t}')
 
     def test_accept_cmavo(self):
+        ls_cmavo = load_official_cmavo()
+
         def assert_cmavo(item, full_cmavo):
             assert_that(item[0], equal_to(class_.CMAVO),
                         f"for cmavo {full_cmavo}")
-            assert_that(item[1], is_in(CMAVO), f"for cmavo {full_cmavo}")
+            assert_that(item[1], is_in(ls_cmavo), f"for cmavo {full_cmavo}")
 
-        for cmavo in sorted(CMAVO):
+        for cmavo in sorted(ls_cmavo):
             t = parse_all(cmavo)
 
             while len(t) > 1:
@@ -293,13 +261,10 @@ class LogFlashTest(unittest.TestCase):
 
 
 class FixtureTest(unittest.TestCase):
-    fixture = None
-
-    def setUpClass():
-        FixtureTest.fixture = load_fixture('fixture.txt')
 
     def test_lexer(self):
-        for item in self.fixture:
+        fixture = load_fixture()
+        for item in fixture:
             text = item.text
             expected = item.lex
 
@@ -310,5 +275,4 @@ class FixtureTest(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    load_official_data_fixture()
     unittest.main()
