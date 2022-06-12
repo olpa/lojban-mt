@@ -7,7 +7,7 @@ I've just released the first version of a lojban tokenizer. It is intended for u
 
 Additionally, there is a lexer, which can be used to develop alternative tokenizers.
 
-Home page: https://github.com/olpa/lojban-mt/tree/master/tokenizer/
+Home page: <https://github.com/olpa/lojban-mt/tree/master/tokenizer/>
 
 Fast start:
 
