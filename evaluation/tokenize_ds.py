@@ -1,4 +1,6 @@
 import argparse
+import datasets
+import tok_external
 
 
 def parse_command_line():
@@ -11,9 +13,26 @@ def parse_command_line():
     return parser.parse_args()
 
 
+def tokenize(ds, tokenizer, src_field, tgt_field):
+    new_splits = {}
+    for name, split in ds.items():
+        sentences = split[src_field]
+        tokenized = tok_external.batch_tokenize(tokenizer, sentences)
+        new_splits[name] = split.add_column(tgt_field, tokenized)
+    for name, split in new_splits.items():
+        ds[name] = split
+
 def main():
     args = parse_command_line()
-    print(args)
+    if args.tokenizer == 'moses-en':
+        tokenizer = tok_external.get_moses_en_tokenizer()
+    elif args.tokenizer == 'jb':
+        tokenizer = tok_external.get_jbo_tokenizer()
+    else:
+        raise RuntimeError(f'Unknown tokenizer: {args.tokenizer}')
 
+    ds = datasets.load_from_disk('cache/jbo-corpus.data')
+    tokenize(ds, tokenizer, args.src_field, args.tgt_field)
+    ds.save_to_disk(args.output)
 
 main()
