@@ -7,7 +7,7 @@ import sys
 # -b  disable Perl buffering
 # -l  [en|de|...]
 MOSES_EN_COMMAND = [
-        *'docker run --rm olpa/moses-tune'.split(),
+        *'docker run -i --rm olpa/moses-tune'.split(),
         *'/opt/moses/scripts/tokenizer/tokenizer.perl -q -b -l en'.split()
         ]
 
@@ -37,8 +37,8 @@ def batch_tokenize(tokenizer, sentences):
 
 
 if '__main__' == __name__:
-    #tokenizer = get_moses_en_tokenizer()
-    tokenizer = get_jbo_tokenizer()
+    tokenizer = get_moses_en_tokenizer()
+    #tokenizer = get_jbo_tokenizer()
     text = [li.strip() for li in sys.stdin]
     back = batch_tokenize(tokenizer, text)
     print('\n'.join(back))
