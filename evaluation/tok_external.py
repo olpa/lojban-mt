@@ -26,21 +26,21 @@ class ExternalTokenizer:
             raise SystemError(f'stderr from the tokenizer: {back[1]}')
         return back[0]
 
+    def batch_tokenize(self, sentences):
+        text = '\n'.join(sentences).encode('utf-8')
+        back = self.execute(text)
+        tokenized = str(back, 'utf-8').split('\n')
+        if tokenized and tokenized[-1] == '':
+            tokenized.pop()
+        assert len(sentences) == len(tokenized), f'Number of input sentences: {len(sentences)}, number of tokenized sentences: {len(tokenized)}'
+        return tokenized
+
 
 def get_moses_en_tokenizer():
     return ExternalTokenizer(MOSES_EN_COMMAND)
 
 def get_jbo_tokenizer():
     return ExternalTokenizer(JBOPARSE_COMMAND)
-
-def batch_tokenize(tokenizer, sentences):
-    text = '\n'.join(sentences).encode('utf-8')
-    back = tokenizer.execute(text)
-    tokenized = str(back, 'utf-8').split('\n')
-    if tokenized and tokenized[-1] == '':
-        tokenized.pop()
-    assert len(sentences) == len(tokenized), f'Number of input sentences: {len(sentences)}, number of tokenized sentences: {len(tokenized)}'
-    return tokenized
 
 
 if '__main__' == __name__:
