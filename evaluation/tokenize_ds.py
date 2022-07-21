@@ -32,7 +32,7 @@ def main():
     else:
         raise RuntimeError(f'Unknown tokenizer: {args.tokenizer}')
 
-    ds = datasets.load_from_disk('cache/jbo-corpus.data')
+    ds = datasets.load_from_disk(args.dataset)
     tokenize(ds, tokenizer, args.src_field, args.tgt_field)
     ds.save_to_disk(args.output)
 
