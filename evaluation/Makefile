@@ -18,8 +18,8 @@ tok-jb-v100: cache/tokenized-v100-en-jb.data
 cache/tokenized-v100-en-jb.data: cache/tokenized-v100-en.data
 	python3 tokenize_ds.py \
 	  --dataset $< \
-	  --src-field en \
-	  --tgt-field en-moses-tok \
+	  --src-field jb \
+	  --tgt-field jb-tok \
 	  --tokenizer jb \
 	  --output $@
 
@@ -29,4 +29,4 @@ trans100en2jb:
 clean:
 	rm -f cache/*/*/*
 	rm -f cache/*/dataset_dict.json
-	find cache -type d -exec rmdir {} ";"
+	find cache -depth -type d -exec rmdir {} ";"
