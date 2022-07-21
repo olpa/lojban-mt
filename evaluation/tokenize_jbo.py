@@ -28,7 +28,7 @@ def tokenize(text):
 
 class JboTokenizer:
     def batch_tokenize(self, sentences):
-        return [tokenize(sent) for sent in sentences]
+        return [' '.join(tokenize(sent)) for sent in sentences]
 
 
 def main():
