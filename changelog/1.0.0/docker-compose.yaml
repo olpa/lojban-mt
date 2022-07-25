@@ -5,9 +5,9 @@ services:
     ports:
       - '6543:6543'
     environment:
-      MOSES_SERVER_JB2EN: 'http://jb2en:8080'
-      MOSES_SERVER_EN2JB: 'http://en2jb:8080'
-  jb2en:
-    image: 'olpa/moses-zf-jb2en:1.0.0'
-  en2jb:
-    image: 'olpa/moses-zf-en2jb:1.0.0'
+      MOSES_SERVER_JB2EN: 'http://jb-en:8080'
+      MOSES_SERVER_EN2JB: 'http://en-jb:8080'
+  jb-en:
+    image: 'olpa/moses-zf-jb-en:1.0.0'
+  en-jb:
+    image: 'olpa/moses-zf-en-jb:1.0.0'
