@@ -1,4 +1,6 @@
 import argparse
+import datasets
+import xmlrpc.client
 
 # The core part is mostly a copy/paste from zmifanva/web.
 
@@ -45,10 +47,11 @@ def translate_sentence(moses_server, sentence):
     return tgt
 
 
-def translate(ds, moses_server, src_fields, tgt_field):
+def translate(ds, moses_server, src_field, tgt_field):
     new_splits = {}
     for name, split in ds.items():
-        sentences = split[src_field]
+        sentences = split[src_field][:5]  # FIXME
+        print(sentences)
         translations = [
                 translate_sentence(moses_server, sentence)
                 for sentence in sentences]
