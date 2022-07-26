@@ -51,6 +51,15 @@ cache/translated-v100.data: cache/translated-v100-en-jb.data
 run-jb-en-100:
 	docker run -p 8124:8080 --name jb-en-100 olpa/moses-zf-jb-en:1.0.0
 
+eval-jb-en-100: cache/eval-jb-en-100
+
+cache/eval-jb-en-100: cache/translated-v100.data
+	python3 calc-bleu.py \
+	  --dataset $< \
+	  --reference-field en-moses-tok \
+	  --translation-field en-moses \
+	  | tee $@
+
 clean:
 	rm -f cache/*/*/*
 	rm -f cache/*/dataset_dict.json
