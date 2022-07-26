@@ -9,7 +9,8 @@ def parse_command_line():
     parser.add_argument('--dataset', required=True)
     parser.add_argument('--src-field', required=True)
     parser.add_argument('--tgt-field', required=True)
-    parser.add_argument('--tokenizer', choices=['moses-en', 'jb'], required=True)
+    parser.add_argument('--tokenizer',
+                        choices=['moses-en', 'jb'], required=True)
     parser.add_argument('--output', required=True)
     return parser.parse_args()
 
@@ -23,6 +24,7 @@ def tokenize(ds, tokenizer, src_field, tgt_field):
     for name, split in new_splits.items():
         ds[name] = split
 
+
 def main():
     args = parse_command_line()
     if args.tokenizer == 'moses-en':
@@ -35,5 +37,6 @@ def main():
     ds = datasets.load_from_disk(args.dataset)
     tokenize(ds, tokenizer, args.src_field, args.tgt_field)
     ds.save_to_disk(args.output)
+
 
 main()

@@ -4,12 +4,14 @@ import json
 from sacrebleu.metrics import BLEU, CHRF, TER
 import sys
 
+
 def parse_command_line():
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', required=True)
     parser.add_argument('--reference-field', required=True)
     parser.add_argument('--translation-field', required=True)
     return parser.parse_args()
+
 
 def split_to_score(reference, system):
     refs = [[ref] for ref in reference]
@@ -19,6 +21,7 @@ def split_to_score(reference, system):
             'chrf': str(CHRF().corpus_score(system, refs)),
             'ter': str(TER().corpus_score(system, refs)),
             }
+
 
 def main():
     args = parse_command_line()
@@ -30,5 +33,6 @@ def main():
             for name, split in ds.items()
             }
     json.dump(report, sys.stdout, indent=2)
+
 
 main()

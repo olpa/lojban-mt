@@ -20,7 +20,11 @@ class ExternalTokenizer:
         self.command = command
 
     def execute(self, text):
-        pipe = subprocess.Popen(self.command, stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+        pipe = subprocess.Popen(
+                self.command,
+                stdin=subprocess.PIPE,
+                stdout=subprocess.PIPE,
+                stderr=subprocess.STDOUT)
         back = pipe.communicate(text)
         if back[1]:
             raise SystemError(f'stderr from the tokenizer: {back[1]}')
@@ -32,20 +36,22 @@ class ExternalTokenizer:
         tokenized = str(back, 'utf-8').split('\n')
         if tokenized and tokenized[-1] == '':
             tokenized.pop()
-        assert len(sentences) == len(tokenized), f'Number of input sentences: {len(sentences)}, number of tokenized sentences: {len(tokenized)}'
+        assert len(sentences) == len(tokenized), \
+               f'Number of input sentences: {len(sentences)}, ' \
+               f'number of tokenized sentences: {len(tokenized)}'
         return tokenized
 
 
 def get_moses_en_tokenizer():
     return ExternalTokenizer(MOSES_EN_COMMAND)
 
+
 def get_jbo_tokenizer():
     return ExternalTokenizer(JBOPARSE_COMMAND)
 
 
 if '__main__' == __name__:
-    #tokenizer = get_moses_en_tokenizer()
     tokenizer = get_jbo_tokenizer()
     text = [li.strip() for li in sys.stdin]
-    back = batch_tokenize(tokenizer, text)
+    back = tokenizer.batch_tokenize(tokenizer, text)
     print('\n'.join(back))

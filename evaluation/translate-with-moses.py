@@ -4,6 +4,7 @@ import xmlrpc.client
 
 # The core part is mostly a copy/paste from zmifanva/web.
 
+
 def parse_command_line():
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset', required=True)
@@ -12,6 +13,7 @@ def parse_command_line():
     parser.add_argument('--src-field', required=True)
     parser.add_argument('--tgt-field', required=True)
     return parser.parse_args()
+
 
 PUNC_ENTITY_MAP = [
     # ('&', '&amp;'),  # handle specially
@@ -58,11 +60,13 @@ def translate(ds, moses_server, src_field, tgt_field):
     for name, split in new_splits.items():
         ds[name] = split
 
+
 def main():
     args = parse_command_line()
     moses_server = xmlrpc.client.ServerProxy(args.endpoint)
     ds = datasets.load_from_disk(args.dataset)
     translate(ds, moses_server, args.src_field, args.tgt_field)
     ds.save_to_disk(args.output)
+
 
 main()
