@@ -2,6 +2,7 @@
 
 - [./changelog](./changelog): historical versions
 - [./data](./data): parallel corpus of lojban sentences
+- [./evaluation](./evaluation): calculate BLEU and other scores
 - [./moses](./moses): dockerized statistical machine translation system [moses](https://www.statmt.org/moses/)
 - [./tokenizer](./tokenizer): tokenize lojban for machine learning applications
 - [./zmifanva](./zmifanva): Lojban-English machine translation engine, originally by mhagiwara, moved to <https://github.com/olpa/zmifanva/>
