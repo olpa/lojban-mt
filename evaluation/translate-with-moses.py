@@ -50,8 +50,7 @@ def translate_sentence(moses_server, sentence):
 def translate(ds, moses_server, src_field, tgt_field):
     new_splits = {}
     for name, split in ds.items():
-        sentences = split[src_field][:5]  # FIXME
-        print(sentences)
+        sentences = split[src_field]
         translations = [
                 translate_sentence(moses_server, sentence)
                 for sentence in sentences]

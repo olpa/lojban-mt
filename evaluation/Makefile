@@ -23,17 +23,33 @@ cache/tokenized-v100-en-jb.data: cache/tokenized-v100-en.data
 	  --tokenizer jb \
 	  --output $@
 
-trans100en2jb: cache/tokenized-v100-en-jb.data
+trans-v100-en-jb: cache/translated-v100-en-jb.data
+
+cache/translated-v100-en-jb.data: cache/tokenized-v100-en-jb.data
 	python3 translate-with-moses.py \
 	  --dataset $< \
 	  --endpoint http://localhost:8123 \
 	  --src-field en-moses-tok \
 	  --tgt-field jb-moses \
-	  --output cache/translated-v100-en-jb.data
-	# docker stop jb2en100  # FIXME
+	  --output $@
+	docker stop en-jb-100
 
-run-jb2en100:
-	docker run -p 8123:8080 --name jb2en100 olpa/moses-zf-jb-en:1.0.0
+run-en-jb-100:
+	docker run -p 8123:8080 --name en-jb-100 olpa/moses-zf-en-jb:1.0.0
+
+trans-v100-jb-en: cache/translated-v100.data
+
+cache/translated-v100.data: cache/translated-v100-en-jb.data
+	python3 translate-with-moses.py \
+	  --dataset $< \
+	  --endpoint http://localhost:8124 \
+	  --src-field jb-tok \
+	  --tgt-field en-moses \
+	  --output $@
+	docker stop jb-en-100
+
+run-jb-en-100:
+	docker run -p 8124:8080 --name jb-en-100 olpa/moses-zf-jb-en:1.0.0
 
 clean:
 	rm -f cache/*/*/*
