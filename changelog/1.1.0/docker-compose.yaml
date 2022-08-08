@@ -9,7 +9,7 @@ services:
       MOSES_SERVER_EN2JB: 'http://en-jb:8080'
   jb-en:
     image: 'olpa/moses-zf-jb-en:1.1.0'
-    command: 'opt/moses/bin/moses --server --server-port 8080 -f /zmifanva/moses_model/jb-en/moses.ini'
+    command: '/opt/moses/bin/moses --server --server-port 8080 -f /zmifanva/moses_model/jb-en/moses.ini'
   en-jb:
     image: 'olpa/moses-zf-en-jb:1.1.0'
-    command: 'opt/moses/bin/moses --server --server-port 8080 -f /zmifanva/moses_model/en-jb/moses.ini'
+    command: '/opt/moses/bin/moses --server --server-port 8080 -f /zmifanva/moses_model/en-jb/moses.ini'
