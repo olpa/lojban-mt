@@ -20,6 +20,7 @@ def tokenize(ds, tokenizer, src_field, tgt_field):
     for name, split in ds.items():
         sentences = split[src_field]
         tokenized = tokenizer.batch_tokenize(sentences)
+        tokenized = [s.lower() for s in tokenized]
         new_splits[name] = split.add_column(tgt_field, tokenized)
     for name, split in new_splits.items():
         ds[name] = split

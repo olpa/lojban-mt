@@ -28,7 +28,7 @@ def main():
     ds = datasets.load_from_disk(args.dataset)
     report = {
             name: split_to_score(
-                reference=split[args.reference_field],
+                reference=[s.lower() for s in split[args.reference_field]],
                 system=split[args.translation_field])
             for name, split in ds.items()
             }

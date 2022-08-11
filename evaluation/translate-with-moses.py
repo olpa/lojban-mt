@@ -46,6 +46,7 @@ def translate_sentence(moses_server, sentence):
     tr = moses_server.translate({'text': src})
     tgt = tr['text']
     tgt = unescape_html_entities(tgt)
+    tgt = tgt.lower()
     return tgt
 
 

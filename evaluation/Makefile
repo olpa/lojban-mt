@@ -136,4 +136,5 @@ cache/eval-en-jb-110: cache/translated-v110.data
 clean:
 	rm -f cache/*/*/*
 	rm -f cache/*/dataset_dict.json
+	rm -f cache/eval*
 	find cache -depth -type d -exec rmdir {} ";"

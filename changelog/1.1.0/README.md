@@ -26,41 +26,41 @@ xdg-open http://localhost:6543
 
 ### English to Lojban
 
-train
-```
-BLEU = 91.57 96.9/93.5/90.0/86.2 (BP = 1.000 ratio = 1.000 hyp_len = 32 ref_len = 32)
-chrF2 = 96.14
-TER = 15.22
-```
-
 test
 ```
-BLEU = 64.12 93.8/71.0/56.7/44.8 (BP = 1.000 ratio = 1.032 hyp_len = 32 ref_len = 31)
-chrF2 = 73.29
-TER = 170.44
+BLEU = 68.35 100.0/79.3/57.1/48.1 (BP = 1.000 ratio = 1.034 hyp_len = 30 ref_len = 29)
+chrF2 = 78.05
+TER = 113.63
+```
+
+train
+```
+BLEU = 89.01 96.9/90.3/86.7/82.8 (BP = 1.000 ratio = 1.000 hyp_len = 32 ref_len = 32)
+chrF2 = 94.50
+TER = 30.43
 ```
 
 validation
 ```
-BLEU = 49.53 100.0/52.6/38.9/29.4 (BP = 1.000 ratio = 1.000 hyp_len = 20 ref_len = 20)
-chrF2 = 76.75
-TER = 128.61
+BLEU = 68.34 100.0/81.8/60.0/44.4 (BP = 1.000 ratio = 1.000 hyp_len = 12 ref_len = 12)
+chrF2 = 86.94
+TER = 14.29
 ```
 
 ### Lojban to English
 
-train
-```
-BLEU = 49.01 75.0/55.6/38.5/36.0 (BP = 1.000 ratio = 1.000 hyp_len = 28 ref_len = 28)
-chrF2 = 47.56
-TER = 224.65
-```
-
 test
 ```
-BLEU = 39.15 77.1/58.8/33.3/21.9 (BP = 0.918 ratio = 0.921 hyp_len = 35 ref_len = 38)
-chrF2 = 62.47
+BLEU = 45.85 77.1/67.6/42.4/28.1 (BP = 0.918 ratio = 0.921 hyp_len = 35 ref_len = 38)
+chrF2 = 63.27
 TER = 237.11
+```
+
+train
+```
+BLEU = 49.58 78.6/55.6/38.5/36.0 (BP = 1.000 ratio = 1.000 hyp_len = 28 ref_len = 28)
+chrF2 = 48.09
+TER = 224.65
 ```
 
 validation
