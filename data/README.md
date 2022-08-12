@@ -11,24 +11,30 @@ Usage (requirement: [datasets](https://pypi.org/project/datasets/) library):
 >>> print(ds)
 DatasetDict({
     train: Dataset({
-        features: ['id', 'jb', 'en', 'source'],
+        features: ['id', 'jb', 'jb_tok', 'en', 'en_tok', 'source'],
         num_rows: 8844
     })
     test: Dataset({
-        features: ['id', 'jb', 'en', 'source'],
+        features: ['id', 'jb', 'jb_tok', 'en', 'en_tok', 'source'],
         num_rows: 2688
     })
     validation: Dataset({
-        features: ['id', 'jb', 'en', 'source'],
+        features: ['id', 'jb', 'jb_tok', 'en', 'en_tok', 'source'],
         num_rows: 2681
     })
 })
->>> ds['train'][200]
-{'id': 'crashcourse.jbo_eng_dict:1221',
- 'jb': "e'o do dunda lo kabri be lo ladru mi",
- 'en': 'Please give me a glass of milk.',
- 'source': 'crashcourse.jbo_eng_dict'}
+>>> ds['train'][124]
+{
+  'id': 'Conlang:72',
+  'jb': "la batman jo'u la robin se steci lo ka balpre bu'u la gotam",
+  'jb_tok': "la batci## manku jo'u la ro bi n se steci lo ka banli## prenu bu'u la go ta m",
+  'en': 'Batman and Robin are the only heros in Gotham.',
+  'en_tok': 'batman and robin are the only hero ##s in gotham .',
+  'source': 'conlang'
+}
 ```
+
+The fields `jb_tok` and `en_tok` are the tokenized versions of `jb` and `en` correspondingly. [Lojban tokenizer](https://github.com/olpa/lojban-mt/tree/master/tokenizer). English tokenizer: from [huggingface transformers](https://huggingface.co/docs/transformers/index), "bert-base-uncased".
 
 How to use datasets:
 
